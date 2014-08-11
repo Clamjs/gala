@@ -1,0 +1,56 @@
+var http = require('http');
+var Onion = require('tiny-onion').Onion;
+
+
+var App = require('../lib/Application.js');
+
+var Btest = Onion.extend({
+  name: "Btest",
+  handle: function () {
+    var self = this;
+    return function (next) {
+      var fn = self.super_.handle.call(self);
+      var ret = fn.apply(this, arguments);
+      // if (ret)
+      console.log('ret should be the break=%s', ret)
+    }
+  }
+});
+
+var atest = new Onion().use(function (next) {
+  console.log('atest 1 -init');
+  next();
+}).use(function (next) {
+  console.log('atest 2 -next');
+  next();
+});
+
+var btest = new Btest().use(function (next) {
+  console.log('btest 1 --init');
+  // return 'BREAK'
+  next();
+}).use(function (next) {
+  console.log('btest 2 --failed');
+  this.header('Content-Type', 'text/html');
+  // this.header('Content-Encoding', 'gzip');
+  var res = this.res;
+  console.log(this.header())
+  // res.writeHead(200, this.header());
+  // res.write('abc');
+  // res.end();
+  console.log(this.header())
+  // this.pipe('./test/test-stream.js')
+  next();
+  this.jsonp({
+    test:'btest'
+  });
+});
+
+var app = new App({
+  rootdir: './',
+  assets: 'assets',
+  module: 'module',
+  view: 'view',
+  jsonp: 'acbk'
+});
+app.use(atest.handle()).use(btest.handle()).listen(8888);

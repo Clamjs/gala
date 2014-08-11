@@ -1,0 +1,34 @@
+{
+  "name": "gala",
+  "version": "0.0.0",
+  "description": "An application like koa but in stable js",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "dependencies": {
+    "tiny-onion":"latest",
+    "debug": "latest",
+    "negotiator": "latest",
+    "cookie": "latest",
+    "querystring": "latest",
+    "mime": "latest",
+    "jschardet": "^1.1.0",
+    "is-utf8": "^0.2.0"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:clam/application.git"
+  },
+  "keywords": [
+    "app",
+    "koa",
+    "clam"
+  ],
+  "author": "lichenhao",
+  "license": "MIT"
+}
