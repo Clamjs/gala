@@ -18,11 +18,11 @@
     "is-utf8": "^0.2.0"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node ./test/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:clam/application.git"
+    "url": "https://github.com/Clamjs/gala.git"
   },
   "keywords": [
     "app",
