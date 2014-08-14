@@ -1,6 +1,6 @@
 {
   "name": "gala",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An application like koa but in stable js",
   "main": "index.js",
   "directories": {
