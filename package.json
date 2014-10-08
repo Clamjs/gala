@@ -1,6 +1,6 @@
 {
   "name": "gala",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An application like koa but in stable js",
   "main": "index.js",
   "directories": {
@@ -13,9 +13,7 @@
     "negotiator": "latest",
     "cookie": "latest",
     "querystring": "latest",
-    "mime": "latest",
-    "jschardet": "^1.1.0",
-    "is-utf8": "^0.2.0"
+    "mime": "latest"
   },
   "scripts": {
     "test": "node ./test/test.js"
