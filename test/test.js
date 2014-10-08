@@ -1,7 +1,7 @@
 var http = require('http');
-var Onion = require('tiny-onion').Onion;
+var Onion = require('tiny-onion');
 
-var App = require('../lib/Application.js');
+var App = require('../');
 
 var Btest = Onion.extend({
   name: "Btest",
@@ -21,8 +21,9 @@ var atest = new Onion().use(function (next) {
 
 var btest = new Btest().use(function (next) {
   console.log('btest 1 --init');
+  this.pipe('./index.html');
   // return 'BREAK'
-  next();
+  // next();
 }).use(function (next) {
   console.log('btest 2 --failed');
   // this.header('Content-Type', 'text/html');
@@ -33,7 +34,7 @@ var btest = new Btest().use(function (next) {
   // res.write('abc');
   // res.end();
   // console.log(this.header())
-  // this.pipe('./test/test-stream.js')
+  this.pipe('./test/test-stream.js')
   next();
   // this.jsonp({
   //   test:'btest'

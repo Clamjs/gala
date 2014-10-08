@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Error ${__STATUS}</title>
+</head>
+<body>
+  <h2>Error ${__STATUS}</h2>
+  {@if __DEBUG}
+  <ul>
+    {@each stack as msg,i}
+    <li>${msg}</li>
+    {@/each}
+  </ul>
+  {@else}
+  <p>${message}</p>
+  {@/if}
+</body>
+</html>
