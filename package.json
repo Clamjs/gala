@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "tiny-onion":"latest",
-    "debug": "latest",
     "negotiator": "latest",
     "cookie": "latest",
     "querystring": "latest",

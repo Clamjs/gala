@@ -1,5 +1,5 @@
 var http = require('http');
-var Onion = require('tiny-onion');
+var Onion = require('../../tiny-onion/');
 
 var App = require('../');
 
@@ -11,20 +11,20 @@ var Btest = Onion.extend({
   }
 });
 
-var atest = new Onion().use(function (next) {
+var atest = new Onion().use(function (req, res, next) {
   console.log('atest 1 -init');
   return next();
-}).use(function (next) {
+}).use(function (req, res, next) {
   console.log('atest 2 -next');
   return next();
 });
 
-var btest = new Btest().use(function (next) {
+var btest = new Btest().use(function (req, res, next) {
   console.log('btest 1 --init');
   this.pipe('./index.html');
   // return 'BREAK'
   // next();
-}).use(function (next) {
+}).use(function (req, res, next) {
   console.log('btest 2 --failed');
   // this.header('Content-Type', 'text/html');
   // this.header('Content-Encoding', 'gzip');
@@ -43,9 +43,6 @@ var btest = new Btest().use(function (next) {
 
 var app = new App({
   rootdir: './',
-  assets: 'assets',
-  module: 'module',
-  view: 'view',
   jsonp: 'acbk'
 });
 app.use(atest.handle()).use(btest.handle()).listen(8888);
